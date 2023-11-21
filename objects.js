@@ -1,54 +1,56 @@
+const prompt = require('prompt-sync')(); // Includes the prompt-sync module for user input
+const fs = require('fs'); // Includes the file system module for file operations
+
+// Defines the parent class for musicians with basic property validation
 class Musician {
-    constructor() {
+    constructor(name, yearsPlaying, hourlyRate, instrument) {
+        // Validates and sets the musician's name, ensuring it's within the character limit
+        this.name = name.length >= 3 && name.length <= 30 ? name : 'Unknown';
+        // Ensures years playing is a non-negative number
+        this.yearsPlaying = yearsPlaying >= 0 ? yearsPlaying : 0;
+        // Ensures hourly rate is not less than 50
+        this.hourlyRate = hourlyRate > 50 ? hourlyRate : 50;
+        // Sets the type of instrument the musician plays
+        this.instrument = instrument;
     }
-    set fullName(name) {
-        if (name.length >= 3 && name.length <= 30) {
-            this.name = name;
-        } else {
-            throw new Error("Name must be between 3 and 30 characters long");
-        }
-    }
-    getfullName() {
-        return this.name;
+}
+
+// Extension of Musician class for guitarists
+class Guitarist extends Musician {
+    constructor(name, yearsPlaying, hourlyRate) {
+        // Calls the parent constructor with 'Guitarist' as the instrument type
+        super(name, yearsPlaying, hourlyRate, 'Guitarist');
     }
 
-    set hourlyRate(rate) {
-        if (rate >= 50) {
-            this.rate = rate;
-        } else {
-            throw new Error("Hourly rate must be equal to or greater than 50");
-        }
+    // Returns a unique interesting fact about guitarists
+    getInterestingFact() {
+        return "The more strings you have, the better you are";
     }
-    gethourlyRate() {
-        return this.rate;
-    }
-    set yearsPlaying(experience)
-    {
-        if (experience >= 0)
-        {
-            this.experience = experience;
-        } else {
-            throw new Error("Experience cannot be 0 or negative");
-        }
-    }
-    getYearsPlaying()
-    {
-        return this.experience;
-    }
-    set musicianFact(funFact)
-    {
-        this.funFact = funFact
-    }
-    getfunFact()
-    {
-        return this.funFact
+}
+
+// Extension of Musician class for bassists
+class Bassist extends Musician {
+    constructor(name, yearsPlaying, hourlyRate) {
+        // Calls the parent constructor with 'Bassist' as the instrument type
+        super(name, yearsPlaying, hourlyRate, 'Bassist');
     }
 
-    musicianIntroduction() {
-        // Returns the musician's introduction
-        return `Hello there, my name is ${this.name} and I'm a ${this.musicianTypeName}.\
-  I currently play the ${this.instrumentName} and I have ${this.experience} years of experience. \
-  It costs $${this.rate} per hour to hire me. \
-  A fun fact about my instrument is: ${this.funFact}`}
+    // Returns a unique interesting fact about bassists
+    getInterestingFact() {
+        return "Everyone loves a bassist";
+    }
+}
+
+// Extension of Musician class for percussionists
+class Percussionist extends Musician {
+    constructor(name, yearsPlaying, hourlyRate) {
+        // Calls the parent constructor with 'Percussionist' as the instrument type
+        super(name, yearsPlaying, hourlyRate, 'Percussionist');
+    }
+
+    // Returns a unique interesting fact about percussionists
+    getInterestingFact() {
+        return "Me drum";
+    }
 }
 
