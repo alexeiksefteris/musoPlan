@@ -1,12 +1,14 @@
 const prompt = require('prompt-sync')();
 const fs = require('fs');
-const { Musician, Guitarist, Bassist, Percussionist, Flautist, Troupe } = require('./objects');
+const functions = require("./functions.js")
 
+let musicians = [];
 
 function mainMenu() {
     let running = true;
 
     while (running) {
+        console.log('=======================');
         console.log("\nMusoPlan Menu:");
         console.log("1. Create Musician");
         console.log("2. Create Troupe");
@@ -18,3 +20,41 @@ function mainMenu() {
         console.log("8. Provide Detailed Description");
         console.log("9. Exit");
 
+        let choice = prompt("Enter your choice: ");
+
+        switch (choice) {
+            case '1':
+                functions.createMusician();
+                break;
+            case '2':
+                functions.createTroupe();
+                break;
+            case '3':
+                functions.addMusicianToTroupe();
+                break;
+            case '4':
+                calculateDeploymentCost();
+                break;
+            case '5':
+                exportTroupeNames();
+                break;
+            case '6':
+                importTroupeNames();
+                break;
+            case '7':
+                provideSummaryInfo();
+                break;
+            case '8':
+                provideDetailedDescription();
+                break;
+            case '9':
+                running = false;
+                console.log("Exiting program.");
+                break;
+            default:
+                console.log("Invalid choice, please try again.");
+        }
+    }
+}
+
+mainMenu();
