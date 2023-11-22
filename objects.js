@@ -5,7 +5,7 @@ const fs = require('fs'); // Includes the file system module for file operations
 class Musician {
     constructor(name, yearsPlaying, hourlyRate, instrument) {
         // Validates and sets the musician's name, ensuring it's within the character limit
-        this.name = name.length >= 3 && name.length <= 30 ? name : 'Unknown';
+        this.name = name.length >= 3 && name.length <= 30 ? name : '';
         // Ensures years playing is a non-negative number
         this.yearsPlaying = yearsPlaying >= 0 ? yearsPlaying : 0;
         // Ensures hourly rate is not less than 50
@@ -54,3 +54,39 @@ class Percussionist extends Musician {
     }
 }
 
+// Extension of Musician class for flautists
+class Flautist extends Musician {
+    constructor(name, yearsPlaying, hourlyRate) {
+        // Calls the parent constructor with 'Flautist' as the instrument type
+        super(name, yearsPlaying, hourlyRate, 'Flautist');
+    }
+
+    // Returns a unique interesting fact about flautists
+    getInterestingFact() {
+        return "1989 heavy metal instrument of the year";
+    }
+}
+
+// Defines the Troupe class to manage a group of musicians
+class Troupe {
+    constructor(name, genre, duration) {
+        // Sets the troupe's name, genre, and ensures the duration is within allowed limits
+        this.name = name;
+        this.genre = genre;
+        this.duration = duration >= 0.5 && duration <= 3 ? duration : 0.5;
+        // Initializes an empty array to hold troupe members
+        this.members = [];
+    }
+
+    // Adds a musician to the troupe if there's space available
+    addMember(musician) {
+        if (this.members.length < 5) {
+            this.members.push(musician);
+        } else {
+            console.log('Troupe is full!');
+        }
+    }
+}
+
+// Exports the classes for use in other parts of the application
+module.exports = {Musician, Guitarist, Bassist, Percussionist, Flautist, Troupe};
