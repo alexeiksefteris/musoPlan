@@ -6,7 +6,7 @@ const { Guitarist, Bassist, Percussionist, Flautist, Troupe } = require('./objec
 let musicians = []; // Array to store musician objects
 let troupes = []; // Array to store troupe objects
 
-// Function to create and add a musician
+// BEGINNING of createMusician function
 function createMusician() {
     // Prompt for musician's name and validate length
     let name = prompt("Enter musician's name (3-30 characters): ");
@@ -68,6 +68,8 @@ function createMusician() {
     return musician; // Return the created musician object
 }
 
+// END of createMusician function
+
 // Function to add a musician to the musicians array
 function addMusician(musician) {
     musicians.push(musician); // Add the musician object to the array
@@ -78,7 +80,7 @@ function getMusicianList() {
     return musicians; // Return the musicians array
 }
 
-// Function to create a new troupe
+// BEGINNING of createTroupe function
 function createTroupe() {
     // Display troupe genre selection options
     console.log("Create a New Troupe");
@@ -128,8 +130,9 @@ function createTroupe() {
     console.log(`Troupe '${troupeName}' in the genre of ${genre} with a duration of ${duration} hours created successfully.`);
     return troupe; // Return the created troupe object
 }
+// END of createTroup function
 
-// Function to add a musician to a troupe
+// BEGINNING of addMusicianToTroupe function
 function addMusicianToTroupe() {
     // Check if there are musicians and troupes to add to
     if (musicians.length === 0 || troupes.length === 0) {
@@ -167,6 +170,98 @@ function addMusicianToTroupe() {
     troupes[troupeChoice - 1].addMember(musicians[musicianChoice - 1]);
     console.log(`Musician ${musicians[musicianChoice - 1].name} added to troupe ${troupes[troupeChoice - 1].name}.`);
 }
+// END of addMusicianToTroupe function
+
+//BEGINNING of calculateDeploymentCost function
+
+function calculateDeploymentCost(){
+    // Check if there are any troupes available
+    if (troupes.length === 0) {
+        console.log("No troupes available to deploy.");
+        return;
+    }
+
+    // Display a list of available troupes
+    console.log("Select a troupe to deploy: ");
+    troupes.forEach((troupe, index) => {
+        console.log(`${index + 1}. ${troupe.name}`);
+    });
+
+    // Prompt the user to choose a troupe and validate the input
+    let troupeChoice = parseInt(prompt("Enter your choice: "));
+    while (isNaN(troupeChoice) || troupeChoice < 1 || troupeChoice > troupes.length ) {
+    console.log("Invalid choice. Please select a valid troupe.");
+    troupeChoice = parseInt(prompt("Enter your choice: "));
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Export functions for use in other parts of the application
 module.exports = { createMusician, createTroupe, addMusicianToTroupe, getMusicianList };
