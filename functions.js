@@ -61,6 +61,41 @@ function createMusician() {
     return musician; // Return the created musician object
 }
 
+//End of createMusician function
+
+//Beginning of createTroupe function
+function createTroupe() {
+    console.log("Create a New Troupe");
+    console.log("Select the genre for the troupe");
+    console.log("1. Rock");
+    console.log("2. Jazz");
+    console.log("3. Pop");
+
+    // Prompt the user to choose the genre
+    let genreChoice = prompt("Enter your choice (1 - 3): ");
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = {createMusician}
