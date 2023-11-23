@@ -190,23 +190,48 @@ function calculateDeploymentCost(){
     // Prompt the user to choose a troupe and validate the input
     let troupeChoice = parseInt(prompt("Enter your choice: "));
     while (isNaN(troupeChoice) || troupeChoice < 1 || troupeChoice > troupes.length ) {
-    console.log("Invalid choice. Please select a valid troupe.");
-    troupeChoice = parseInt(prompt("Enter your choice: "));
+        console.log("Invalid choice. Please select a valid troupe.");
+        troupeChoice = parseInt(prompt("Enter your choice: "));
     }
 
+    // Prompt for the duiration of deployment and validate the input
+    let duration = parseFloat(prompt("Enter the number of hours for deployment: "));
+    while (isNaN(duration) || duration <=0) {
+        console.log("Please enter a valid number of hours.");
+        duration = parseFloat(prompt("Enter the number of hours for deployment: "));
+    }
 
+    // Get the selected troupe based on user choice
+    const selectedTroupe = troupes[troupeChoice - 1];
 
+    // Calculate the total cost for deployment
+    // This is done by summing the hourly rates of all musicians in the troupe and multiplying them by the duration
+    let totalCost = selectedTroupe.members.reduce((acc, musician) => acc + musician.hourlyRate, 0) * duration;
 
+    // Output the total cost
+    console.log(`Total cost for deploying ${selectedTroupe.name} for ${duration} hours is: $${totalCost.toFixed(2)}`);
 
+}
 
+// End of the calculateDeploymentCost function
 
+// BEGINNING of exportTroupeNames function
+function exportTroupeNames(){
+    if (troupe.length === 0) {
+        console.log("No troupes available to export.");
+        return;
+    }
 
-
-
-
-
-
-
+    let lines = [];
+    troupes.forEach(troupe => {
+        lines.push(`Troupe Name: ${troupe.name}`);
+        lines.push(`Genre: ${troupe.genre}`);
+        lines.push(`Musicians: `);
+        troupe.members.forEach(musician => {
+            lines.push (` - $(musician.name}, ${musician.instrument}`);
+        });
+        lines.push('');
+    })
 
 
 }
@@ -259,11 +284,7 @@ function calculateDeploymentCost(){
 
 
 
-
-
-
-
 // Export functions for use in other parts of the application
-module.exports = { createMusician, createTroupe, addMusicianToTroupe, getMusicianList };
+module.exports = { createMusician, createTroupe, addMusicianToTroupe, getMusicianList, calculateDeploymentCost };
 
 
