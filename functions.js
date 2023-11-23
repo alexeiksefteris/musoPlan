@@ -304,7 +304,7 @@ function viewTroupes() {
     // Iterate over each troupe in the troupes array
     troupes.forEach((troupe, index) => {
         // Print each troupe's details including its name and genre
-        console.log(`${index + 1}. Name: ${troupe.name}, Genre: ${troupe.genre}`);
+        console.log(`${index + 1}. ${troupe.name}`);
     });
 }
 
