@@ -215,24 +215,40 @@ function calculateDeploymentCost(){
 
 // End of the calculateDeploymentCost function
 
-// BEGINNING of exportTroupeNames function
+// BEGINNING of exportTroupeNames
+
+
 function exportTroupeNames(){
+    // Checks if there are any troupes to export
     if (troupe.length === 0) {
         console.log("No troupes available to export.");
         return;
     }
-
+    // Beginning of the array which holds the data for the troupe
     let lines = [];
+    // Iterate over each troupe
     troupes.forEach(troupe => {
+        // Add troupe name and genre to the lines array
         lines.push(`Troupe Name: ${troupe.name}`);
         lines.push(`Genre: ${troupe.genre}`);
+        // Add a header for musicians
         lines.push(`Musicians: `);
+        // Iterate over each musician in the troupe and add their details
         troupe.members.forEach(musician => {
             lines.push (` - $(musician.name}, ${musician.instrument}`);
         });
+        // Add an empty line for better readability in the output file
         lines.push('');
-    })
+    });
 
+    // Try to write the concatenated lines to a text file
+    try {
+        fs.writeFileSync(`troupes.txt`, lines.join(`\n`)); // Joining array elements with new line character
+        console.log("Successs! Troupe names exported to `troupes.txt`.");
+    } catch (err) {
+        // Catcg abd kig aby errors that occur during file rwriting
+        console.log("Error writing to file: " + err.message);
+    }
 
 }
 
