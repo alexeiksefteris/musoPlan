@@ -214,9 +214,9 @@ function calculateDeploymentCost(){
 
 }
 
-// End of the calculateDeploymentCost function
+//End of the calculateDeploymentCost function
 
-// BEGINNING of exportTroupeNames
+//BEGINNING of exportTroupeNames
 
 function exportTroupeNames() {
     // Check if there are any troupes to export
@@ -256,25 +256,33 @@ function exportTroupeNames() {
     }
 }
 
-// END of exportTroupeNames
+//END of exportTroupeNames
 
-// Beginning of importTroupeNames
+//Beginning of importTroupeNames
 
-function importTroupeNames(fileName) {
+function importTroupeNames() {
+    let fileName = prompt("Please enter the name of the .txt file to import troupes from: ");
+
+    // Validate the file name
+    if (!fileName.endsWith('.txt')) {
+        console.log("Invalid file type. Please enter a .txt file.");
+        return;
+    }
+
     try {
-        // Read the contents of the specified file
         const data = fs.readFileSync(fileName, 'utf8');
+        const lines = data.split('\n');
 
-        //Split the file content into lines
-
-        const lines = data.split(`\n`);
-
-        //Iterate over each line to create troupes
         lines.forEach(line => {
             if (line.trim().length > 0) {
-
+                const newTroupe = new Troupe(line.trim(), 'Default Genre', 1);
+                troupes.push(newTroupe); // Troupes should be accessible here
             }
-        })
+        });
+
+        console.log(`Troupes imported successfully from '${fileName}'.`);
+    } catch (err) {
+        console.error(`Error reading file '${fileName}': ${err.message}`);
     }
 }
 
@@ -326,6 +334,6 @@ function importTroupeNames(fileName) {
 
 
 // Export functions for use in other parts of the application
-module.exports = { createMusician, createTroupe, addMusicianToTroupe, getMusicianList, calculateDeploymentCost, exportTroupeNames };
+module.exports = { createMusician, createTroupe, addMusicianToTroupe, getMusicianList, calculateDeploymentCost, exportTroupeNames, importTroupeNames };
 
 
