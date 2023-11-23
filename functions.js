@@ -1,6 +1,7 @@
 // Import necessary modules and classes
 const prompt = require('prompt-sync')(); // Import prompt-sync for user input
 const { Guitarist, Bassist, Percussionist, Flautist, Troupe } = require('./objects'); // Import musician and troupe classes
+const fs = require('fs');
 
 // Global arrays for storing musicians and troupes
 let musicians = []; // Array to store musician objects
@@ -217,39 +218,42 @@ function calculateDeploymentCost(){
 
 // BEGINNING of exportTroupeNames
 
-
-function exportTroupeNames(){
-    // Checks if there are any troupes to export
-    if (troupe.length === 0) {
+function exportTroupeNames() {
+    // Check if there are any troupes to export
+    if (troupes.length === 0) {
         console.log("No troupes available to export.");
         return;
     }
-    // Beginning of the array which holds the data for the troupe
+
+    // Array to hold lines of text for each troupe
     let lines = [];
+
     // Iterate over each troupe
     troupes.forEach(troupe => {
         // Add troupe name and genre to the lines array
         lines.push(`Troupe Name: ${troupe.name}`);
         lines.push(`Genre: ${troupe.genre}`);
+
         // Add a header for musicians
-        lines.push(`Musicians: `);
+        lines.push(`Musicians:`);
+
         // Iterate over each musician in the troupe and add their details
         troupe.members.forEach(musician => {
-            lines.push (` - $(musician.name}, ${musician.instrument}`);
+            lines.push(`  - ${musician.name}, ${musician.instrument}`);
         });
+
         // Add an empty line for better readability in the output file
         lines.push('');
     });
 
     // Try to write the concatenated lines to a text file
     try {
-        fs.writeFileSync(`troupes.txt`, lines.join(`\n`)); // Joining array elements with new line character
-        console.log("Successs! Troupe names exported to `troupes.txt`.");
+        fs.writeFileSync('troupes.txt', lines.join('\n')); // Joining array elements with newline character
+        console.log("Troupe names exported successfully to 'troupes.txt'.");
     } catch (err) {
-        // Catcg abd kig aby errors that occur during file rwriting
-        console.log("Error writing to file: " + err.message);
+        // Catch and log any errors that occur during file writing
+        console.error("Error writing to file: " + err.message);
     }
-
 }
 
 
@@ -300,7 +304,10 @@ function exportTroupeNames(){
 
 
 
+
+
+
 // Export functions for use in other parts of the application
-module.exports = { createMusician, createTroupe, addMusicianToTroupe, getMusicianList, calculateDeploymentCost };
+module.exports = { createMusician, createTroupe, addMusicianToTroupe, getMusicianList, calculateDeploymentCost, exportTroupeNames };
 
 
