@@ -33,10 +33,10 @@ function mainMenu() {
                 functions.addMusicianToTroupe();
                 break;
             case '4':
-                calculateDeploymentCost();
+                functions.calculateDeploymentCost();
                 break;
             case '5':
-                exportTroupeNames();
+                functions.exportTroupeNames();
                 break;
             case '6':
                 importTroupeNames();
