@@ -288,6 +288,39 @@ function importTroupeNames() {
 
 //END of importTroupeNames
 
+//Beginning of provideSummaryInfo
+
+function provideSummaryInfo() {
+    // Check if there are any troupes
+    if (troupes.length === 0) {
+        console.log("No troupes are currently available.");
+        return;
+    }
+
+    // Iterate over each troupe and display its summary
+    troupes.forEach((troupe, index) =>{
+        console.log(`Troupe ${index + 1}:`);
+        console.log
+
+
+
+
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //BEGINNING of viewTroupes
 
 function viewTroupes() {
@@ -303,7 +336,7 @@ function viewTroupes() {
 
     // Iterate over each troupe in the troupes array
     troupes.forEach((troupe, index) => {
-        // Print each troupe's details including its name and genre
+        // Print each troupe's details including its name
         console.log(`${index + 1}. ${troupe.name}`);
     });
 }
@@ -351,6 +384,7 @@ function viewTroupes() {
 
 
 // Export functions for use in other parts of the application
-module.exports = { createMusician, createTroupe, addMusicianToTroupe, getMusicianList, calculateDeploymentCost, exportTroupeNames, importTroupeNames, viewTroupes };
+module.exports = { createMusician, createTroupe, addMusicianToTroupe, getMusicianList,
+    calculateDeploymentCost, exportTroupeNames, importTroupeNames, viewTroupes };
 
 
