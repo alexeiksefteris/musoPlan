@@ -18,7 +18,8 @@ function mainMenu() {
         console.log("6. Import Troupe Names from Text File");
         console.log("7. Provide Summary Information");
         console.log("8. Provide Detailed Description");
-        console.log("9. Exit");
+        console.log("9. View Troupes");
+        console.log("10. Exit");
 
         let choice = prompt("Enter your choice: ");
 
@@ -39,7 +40,7 @@ function mainMenu() {
                 functions.exportTroupeNames();
                 break;
             case '6':
-                importTroupeNames();
+                functions.importTroupeNames();
                 break;
             case '7':
                 provideSummaryInfo();
@@ -48,6 +49,9 @@ function mainMenu() {
                 provideDetailedDescription();
                 break;
             case '9':
+                functions.viewTroupes();
+                break;
+            case '10':
                 running = false;
                 console.log("Exiting program.");
                 break;
@@ -58,5 +62,3 @@ function mainMenu() {
 }
 
 mainMenu();
-
-//Test
