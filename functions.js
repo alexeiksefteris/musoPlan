@@ -260,16 +260,21 @@ function exportTroupeNames() {
 
 // Beginning of importTroupeNames
 
-function importTroupeNames(){
-    try{
-        // Read the contents of the file
-        const data = fs.readFileSync(`troupes.txt`, `utf8`);
+function importTroupeNames(fileName) {
+    try {
+        // Read the contents of the specified file
+        const data = fs.readFileSync(fileName, 'utf8');
 
-        // Split the file content into lines
+        //Split the file content into lines
+
         const lines = data.split(`\n`);
 
-        // Iterate over each line to create troupes
-        lines.forEach(line => {)
+        //Iterate over each line to create troupes
+        lines.forEach(line => {
+            if (line.trim().length > 0) {
+
+            }
+        })
     }
 }
 
