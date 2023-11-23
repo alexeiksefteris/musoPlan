@@ -289,7 +289,6 @@ function importTroupeNames() {
 //END of importTroupeNames
 
 //Beginning of provideSummaryInfo
-
 function provideSummaryInfo() {
     // Check if there are any troupes
     if (troupes.length === 0) {
@@ -298,26 +297,25 @@ function provideSummaryInfo() {
     }
 
     // Iterate over each troupe and display its summary
-    troupes.forEach((troupe, index) =>{
+    troupes.forEach((troupe, index) => {
         console.log(`Troupe ${index + 1}:`);
-        console.log
+        console.log(`  Name: ${troupe.name}`);
+        console.log(`  Genre: ${troupe.genre}`);
+        console.log(`  Members:`);
 
+        // Check if there are members in the troupe
+        if (troupe.members.length === 0) {
+            console.log("    No members in this troupe.");
+        } else {
+            // List each member and their instrument
+            troupe.members.forEach(member => {
+                console.log(`    - ${member.name}`);
+            });
+        }
 
-
-
-    })
+        console.log(''); // Add a blank line for better readability
+    });
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -385,6 +383,6 @@ function viewTroupes() {
 
 // Export functions for use in other parts of the application
 module.exports = { createMusician, createTroupe, addMusicianToTroupe, getMusicianList,
-    calculateDeploymentCost, exportTroupeNames, importTroupeNames, viewTroupes };
+    calculateDeploymentCost, exportTroupeNames, importTroupeNames, viewTroupes, provideSummaryInfo };
 
 
