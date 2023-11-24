@@ -109,4 +109,3 @@ Action                         | Input            | Expected Output             
 -------------------------------|------------------|------------------------------------------------------|----------------
 Choose to calculate cost       | '4'              | 'No troupes available to deploy.'                    | 'No troupes available to deploy.'
 
-For Scenario 1, ensure that the troupe 'Rock Stars' is available and has musicians with set hourly rates for an accurate cost calculation. In Scenario 2, this test is conducted under the condition that no troupes are available in the system, and the system should display an appropriate message indicating the lack of available troupes for deployment. Record the actual outcomes based on your application's behavior during testing.
