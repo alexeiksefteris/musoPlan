@@ -1,5 +1,5 @@
-#VCS Use Report
 
+# VCS Use Report
 ## Introduction
 
 Throughout the development of MusoPlan the Version Control System(VCS) played a crucial role.
