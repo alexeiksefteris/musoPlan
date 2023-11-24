@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+# VCS Use Report
+>>>>>>> a39520a63ea77fa75ff766d661969feabd3477d8
 
 # VCS Use Report
 ## Introduction
