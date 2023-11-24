@@ -43,10 +43,10 @@ function mainMenu() {
                 functions.importTroupeNames();
                 break;
             case '7':
-                provideSummaryInfo();
+                functions.provideSummaryInfo();
                 break;
             case '8':
-                provideDetailedDescription();
+                functions.provideDetailedDescription();
                 break;
             case '9':
                 functions.viewTroupes();

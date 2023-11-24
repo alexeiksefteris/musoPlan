@@ -316,10 +316,44 @@ function provideSummaryInfo() {
         console.log(''); // Add a blank line for better readability
     });
 }
+//END of provideSummaryInfo
+
+//Beginning of provideDetailedDescription
+
+function provideDetailedDescription() {
+    // Check if there are any troupes
+    if (troupes.length === 0) {
+        console.log("No troupes are currently available.");
+        return;
+    }
+
+    // Iterate over each troupe and display detailed information
+    troupes.forEach((troupe, index) => {
+        console.log(`Troupe ${index + 1}:`);
+        console.log(`  Name: ${troupe.name}`);
+        console.log(`  Genre: ${troupe.genre}`);
+        console.log(`  Members:`);
+
+        // Check if there are members in the troupe
+        if (troupe.members.length === 0) {
+            console.log("    No members in this troupe.");
+        } else {
+            // List each member's details
+            troupe.members.forEach(member => {
+                console.log(`    - Name: ${member.name}`);
+                console.log(`      Instrument: ${member.instrument}`);
+                console.log(`      Years Playing: ${member.yearsPlaying}`);
+                console.log(`      Hourly Rate: $${member.hourlyRate}`);
+                console.log(`      Interesting Fact: ${member.getInterestingFact()}`);
+            });
+        }
+
+        console.log(''); // Add a blank line for better readability
+    });
+}
 
 
-
-//BEGINNING of viewTroupes
+//BEGINNING of viewTroupes function
 
 function viewTroupes() {
     // Check if the troupes array is empty
@@ -339,10 +373,9 @@ function viewTroupes() {
     });
 }
 
+//END of viewTroupes function
 
-
-
-
+// function mainMenu() { let running = true; let messages = []; // Array to store messages} //
 
 
 
@@ -383,6 +416,5 @@ function viewTroupes() {
 
 // Export functions for use in other parts of the application
 module.exports = { createMusician, createTroupe, addMusicianToTroupe, getMusicianList,
-    calculateDeploymentCost, exportTroupeNames, importTroupeNames, viewTroupes, provideSummaryInfo };
-
-
+    calculateDeploymentCost, exportTroupeNames, importTroupeNames,
+    viewTroupes, provideSummaryInfo, provideDetailedDescription };
