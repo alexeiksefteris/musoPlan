@@ -1,4 +1,4 @@
-# MusoPlan
+np# MusoPlan
 
 MusoPlan is a command-line application for managing musicians and musical troupes. It allows users to create musicians, assemble them into troupes, and manage troupe details.
 
